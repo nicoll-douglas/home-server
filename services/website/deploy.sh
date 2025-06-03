@@ -14,7 +14,7 @@ source .env
 set +a
 
 echo "Stopping and removing old containers..."
-docker compose down
+docker compose down || true
 
 echo "Logging into Docker Hub with the configured credentials..."
 echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
