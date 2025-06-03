@@ -23,7 +23,7 @@ echo "Pulling Docker images..."
 docker compose pull
 
 echo "Creating and starting new containers..."
-docker compose -d --remove-orphans
+docker compose up -d --remove-orphans
 
 echo "Cleaning up unusued images..."
 docker image prune -af
