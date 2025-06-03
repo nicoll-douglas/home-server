@@ -31,4 +31,4 @@ docker image prune -af
 echo "Logging out of docker..."
 docker logout
 
-echo "Deployment complete.
+echo "Deployment complete."
