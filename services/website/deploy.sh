@@ -6,7 +6,7 @@ SERVICE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 set -e
 
 # switch to directory
-cd $SERVICE_DIR/..
+cd $SERVICE_DIR
 
 # import .env variables into shell environment
 set -a
