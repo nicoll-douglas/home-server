@@ -1,7 +1,7 @@
 services:
   app:
-    image: nicolldouglas/homelab-blog:latest
-    container_name: website
+    image: nicolldouglas/homelab_blog:latest
+    container_name: homelab_log
     ports:
       - "127.0.0.1:8080:80"
     restart: unless-stopped
