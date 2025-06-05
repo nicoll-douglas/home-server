@@ -1,0 +1,3 @@
+allow from <client_ip> to any port 22 proto tcp
+deny 22/tcp
+allow 'Nginx HTTP'
