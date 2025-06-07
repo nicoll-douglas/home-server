@@ -1,3 +1,4 @@
-allow from <client_ip> to any port 22 proto tcp
-deny 22/tcp
 allow 'Nginx HTTP'
+allow from 192.168.1.6 to any port 22 proto tcp
+route allow from 192.168.1.6 to any port 3000 proto tcp
+route allow from 192.168.1.6 to any port 222 proto tcp
