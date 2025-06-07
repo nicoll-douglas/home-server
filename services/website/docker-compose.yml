@@ -1,6 +1,6 @@
 services:
   app:
-    image: nicolldouglas/homelab_blog:latest
+    image: ${DOCKERHUB_IMAGE}
     container_name: homelab_blog
     ports:
       - "127.0.0.1:8080:80"
