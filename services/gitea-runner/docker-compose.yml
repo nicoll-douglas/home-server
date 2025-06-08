@@ -6,7 +6,6 @@ services:
       GITEA_INSTANCE_URL: "${INSTANCE_URL}"
       GITEA_RUNNER_REGISTRATION_TOKEN: "${REGISTRATION_TOKEN}"
       GITEA_RUNNER_NAME: "gitea-default-runner"
-      GITEA_RUNNER_LABELS: "default"
     volumes:
       - runner-data:/data
       - /var/run/docker.sock:/var/run/docker.sock
