@@ -1,0 +1,8 @@
+version: "3.8"
+
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflare_daemon
+    restart: always
+    command: tunnel run --token ${TUNNEL_TOKEN}
