@@ -6,3 +6,9 @@ services:
     container_name: cloudflare_daemon
     restart: always
     command: tunnel run --token ${TUNNEL_TOKEN}
+    networks:
+      - cloudflare-tunnel-net
+
+networks:
+  cloudflare-tunnel-net:
+    external: true

@@ -1,7 +1,11 @@
 services:
-  app:
+  website:
     image: ${DOCKERHUB_IMAGE}
     container_name: homelab_blog
-    ports:
-      - "127.0.0.1:8080:80"
     restart: unless-stopped
+    networks:
+      - cloudflare-tunnel-net
+
+networks:
+  cloudflare-tunnel-net:
+    external: true

@@ -7,4 +7,4 @@ set -e
 cd $SERVICE_DIR
 
 echo "Starting Gitea..."
-docker compose up -d
+sudo docker compose up -d
