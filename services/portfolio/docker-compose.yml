@@ -1,12 +1,10 @@
 services:
-  website:
+  portfolio:
     image: ${DOCKERHUB_IMAGE}
-    container_name: homelab_blog
+    container_name: portfolio_website
     restart: unless-stopped
     networks:
       - cloudflare-tunnel-net
-    ports:
-      - "127.0.0.1:8080:80"
 
 networks:
   cloudflare-tunnel-net:

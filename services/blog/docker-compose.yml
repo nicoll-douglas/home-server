@@ -1,0 +1,11 @@
+services:
+  blog:
+    image: ${DOCKERHUB_IMAGE}
+    container_name: homelab_blog
+    restart: unless-stopped
+    networks:
+      - cloudflare-tunnel-net
+
+networks:
+  cloudflare-tunnel-net:
+    external: true
