@@ -5,6 +5,8 @@ services:
     restart: unless-stopped
     networks:
       - cloudflare-tunnel-net
+    environment:
+      - APP_ENV=${APP_ENV}
 
 networks:
   cloudflare-tunnel-net:
