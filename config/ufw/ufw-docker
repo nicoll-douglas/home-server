@@ -1,4 +1,4 @@
-# add the following to /etc/ufw/after.rules to make ufw and Docker compatible
+# add the following to /etc/ufw/after.rules to make ufw and Docker more compatible
 # see https://github.com/chaifeng/ufw-docker for more
 
 # BEGIN UFW AND DOCKER

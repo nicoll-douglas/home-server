@@ -1,11 +1,11 @@
-# allow HTTP
-allow 'Nginx HTTP'
+# allow access to Nginx container
+route allow 80/tcp
 
-# allow SSH from main
+# allow SSH from dev machine
 allow from 192.168.1.6 to any port 22 proto tcp
 
-# allow access to Gitea (Docker) from main
+# allow access to Gitea container from dev machine
 route allow from 192.168.1.6 to any port 3000 proto tcp
 
-# allow access to Gitea (Docker) via SSH from main
+# allow access to Gitea container via SSH from dev machine
 route allow from 192.168.1.6 to any port 22 proto tcp
