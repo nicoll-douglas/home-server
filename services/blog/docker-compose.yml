@@ -5,6 +5,8 @@ services:
     restart: unless-stopped
     networks:
       - nginx-proxy-net
+    ports:
+      - "3001:80"
 
 networks:
   nginx-proxy-net:
