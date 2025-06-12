@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SERVICE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-NETWORK_NAME="cloudflare-tunnel-net"
+NETWORK_NAME="nginx-proxy-net"
 
 set -e
 
@@ -14,7 +14,7 @@ sudo chmod -R u+w ../../logs/nginx
 if sudo docker network inspect "$NETWORK_NAME" >/dev/null 2>&1; then
   echo "Network '$NETWORK_NAME' is in place."
 else
-  echo "Creating network '$NETWORK_NAME'..."
+  echo "Creating external network '$NETWORK_NAME'..."
   sudo docker network create "$NETWORK_NAME"
 fi
 

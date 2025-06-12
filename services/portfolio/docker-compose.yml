@@ -4,10 +4,10 @@ services:
     container_name: portfolio_website
     restart: unless-stopped
     networks:
-      - cloudflare-tunnel-net
+      - nginx-proxy-net
     environment:
       - APP_ENV=${APP_ENV}
 
 networks:
-  cloudflare-tunnel-net:
+  nginx-proxy-net:
     external: true
