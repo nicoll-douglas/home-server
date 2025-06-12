@@ -8,9 +8,11 @@ services:
     networks:
       - cloudflare-tunnel-net
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./sites:/etc/nginx/sites-enabled:ro
-      - ./logs:/var/log/nginx
+      - ../../config/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ../../config/nginx/sites:/etc/nginx/sites-enabled:ro
+      - ../../logs/nginx:/var/log/nginx
+    ports:
+      - "80:80"
 
   cloudflared:
     image: cloudflare/cloudflared:latest

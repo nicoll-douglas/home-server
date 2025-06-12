@@ -7,6 +7,9 @@ set -e
 
 cd $SERVICE_DIR
 
+echo "Creating logs folder if it doesn't exist..."
+mkdir -p ../../logs/nginx
+
 if sudo docker network inspect "$NETWORK_NAME" >/dev/null 2>&1; then
   echo "Network '$NETWORK_NAME' is in place."
 else
