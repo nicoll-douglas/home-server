@@ -23,11 +23,11 @@ echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-st
 echo "Pulling Docker images..."
 docker compose pull
 
-if sudo docker network inspect "$NETWORK_NAME" >/dev/null 2>&1; then
+if docker network inspect "$NETWORK_NAME" >/dev/null 2>&1; then
   echo "Network '$NETWORK_NAME' is in place."
 else
   echo "Creating external network '$NETWORK_NAME'..."
-  sudo docker network create "$NETWORK_NAME"
+  docker network create "$NETWORK_NAME"
 fi
 
 echo "Creating and starting new containers..."
