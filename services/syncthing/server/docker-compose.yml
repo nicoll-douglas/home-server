@@ -24,5 +24,4 @@ services:
     volumes:
       - /home/jiggy/syncthing/data:/srv
       - /home/jiggy/filebrowser/database.db:/database.db
-      - /home/jiggy/filebrowser/.filebrowser.json:/.filebrowser.json
     restart: unless-stopped
