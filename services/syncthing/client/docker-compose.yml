@@ -6,10 +6,10 @@ services:
     container_name: syncthing-client
     restart: unless-stopped
     ports:
-      - 127.0.0.1:8384:8384
-      - 22000:22000
-      - 22000:22000/udp
-      - 21027:21027/udp
+      - "127.0.0.1:8384:8384"
+      - "22000:22000"
+      - "22000:22000/udp"
+      - "21027:21027/udp"
     volumes:
       - syncthing-config:/var/syncthing/config
       - /media/jiggy/Shared/syncthing:/var/syncthing/data
