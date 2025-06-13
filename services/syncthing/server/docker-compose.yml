@@ -22,12 +22,10 @@ services:
     ports:
       - 3004:80
     volumes:
-      - /home/jiggy/sync:/srv
-      - filebrowser-data:/database.db
-      - filebrowser-config:/config/settings.json
+      - /home/jiggy/syncthing/data:/srv
+      - filebrowser-config:/config
     restart: unless-stopped
 
 volumes:
   syncthing-config:
-  filebrowser-data:
   filebrowser-config:
