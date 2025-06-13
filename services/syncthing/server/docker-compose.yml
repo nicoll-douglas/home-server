@@ -23,9 +23,6 @@ services:
       - 3004:80
     volumes:
       - /home/jiggy/syncthing/data:/srv
-      - filebrowser-config:/config
+      - /home/jiggy/filebrowser/database.db:/database.db
+      - /home/jiggy/filebrowser/.filebrowser.json:/.filebrowser.json
     restart: unless-stopped
-
-volumes:
-  syncthing-config:
-  filebrowser-config:
