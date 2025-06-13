@@ -25,3 +25,9 @@ services:
       - /home/jiggy/syncthing/data:/srv
       - /home/jiggy/filebrowser/database.db:/database.db
     restart: unless-stopped
+    networks:
+      - nginx-proxy-net
+
+networks:
+  nginx-proxy-net:
+    external: true
