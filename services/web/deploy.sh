@@ -18,5 +18,5 @@ else
   sudo docker network create "$NETWORK_NAME"
 fi
 
-echo "Starting web service providers..."
+echo "Starting nginx and cloudflared containers..."
 sudo docker compose up -d

@@ -1,0 +1,33 @@
+version: "3.8"
+services:
+  syncthing:
+    image: syncthing/syncthing:latest
+    container_name: syncthing-server
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - syncthing-config:/var/syncthing/config
+      - /home/jiggy/syncthing:/var/syncthing/data
+    ports:
+      - 3005:8384
+      - 22000:22000/tcp
+      - 22000:22000/udp
+      - 21027:21027/udp
+    restart: unless-stopped
+
+  filebrowser:
+    image: filebrowser/filebrowser
+    container_name: filebrowser
+    ports:
+      - 3004:80
+    volumes:
+      - /home/jiggy/syncthing:/srv
+      - filebrowser-data:/database.db
+      - filebrowser-config:/config/settings.json
+    restart: unless-stopped
+
+volumes:
+  syncthing-config:
+  filebrowser-data:
+  filebrowser-config:

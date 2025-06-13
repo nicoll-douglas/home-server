@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  syncthing:
+    image: syncthing/syncthing:latest
+    container_name: syncthing-client
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:8384:8384
+      - 22000:22000
+      - 22000:22000/udp
+      - 21027:21027/udp
+    volumes:
+      - syncthing-config:/var/syncthing/config
+      - /media/jiggy/Shared/syncthing:/var/syncthing/data
+    environment:
+      - PUID=1000
+      - PGID=1000
+
+volumes:
+  syncthing-config:
