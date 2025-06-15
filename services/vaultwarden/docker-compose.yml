@@ -9,7 +9,7 @@ services:
       - ${DATA_DIR}:/data
     environment:
       - DOMAIN=${INSTANCE_URL}
-      - SIGNUPS_ALLOWED=true
+      - SIGNUPS_ALLOWED=false
     networks:
       - nginx-proxy-net
     expose:
