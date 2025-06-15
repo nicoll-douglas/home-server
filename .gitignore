@@ -1,6 +1,10 @@
 # env
-*.env
+.env*
+!.env*.example
 
 # logs
 *.log
 logs
+
+# certificates
+*.pem
