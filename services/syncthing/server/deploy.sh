@@ -20,5 +20,5 @@ touch $FILEBROWSER_DIR/database.db
 # switch to current directory
 cd $SERVICE_DIR
 
-echo "Starting syncthing and filebrowser containers..."
+echo "Starting Syncthing and File Browser containers..."
 docker compose up -d

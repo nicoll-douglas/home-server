@@ -21,21 +21,19 @@ if [ ! -f /usr/local/bin/mkcert ]; then
   sudo mv mkcert-v*-linux-amd64 /usr/local/bin/mkcert
 fi
 
-if ! [ -f $CERT_FILE  ] || ! [ -f $CERT_KEY ]; then
-  echo "Generating SSL certificate..."
-  domains=$(cat $DOMAINS_FILE | xargs)
+echo "Generating TLS certificate..."
+domains=$(cat $DOMAINS_FILE | xargs)
 
-  if [ -z "$domains" ]; then
-    echo "No domains found in $DOMAINS_FILE"
-    exit 1
-  fi
-
-  sudo -u "$SUDO_USER" mkdir -p ./certs
-  sudo -u "$SUDO_USER" mkcert \
-    -cert-file "$CERT_FILE" \
-    -key-file "$CERT_KEY" \
-    $domains
+if [ -z "$domains" ]; then
+  echo "No domains found in $DOMAINS_FILE"
+  exit 1
 fi
+
+sudo -u "$SUDO_USER" mkdir -p ./certs
+sudo -u "$SUDO_USER" mkcert \
+  -cert-file "$CERT_FILE" \
+  -key-file "$CERT_KEY" \
+  $domains
 
 echo "Creating logs directory if it doesn't exist..."
 sudo -u "$SUDO_USER" mkdir -p $LOGS_DIR

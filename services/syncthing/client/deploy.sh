@@ -17,5 +17,5 @@ mkdir -p $SYNCTHING_DIR/config
 # switch to directory
 cd $SERVICE_DIR
 
-echo "Starting syncthing container..."
+echo "Starting Syncthing container..."
 docker compose up -d
