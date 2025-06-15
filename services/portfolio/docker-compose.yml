@@ -6,9 +6,7 @@ services:
     networks:
       - nginx-proxy-net
     environment:
-      - APP_ENV=${APP_ENV}
-    ports:
-      - "3002:80"
+      - APP_ENV=production
 
 networks:
   nginx-proxy-net:

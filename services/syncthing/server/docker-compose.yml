@@ -7,23 +7,24 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - /home/jiggy/syncthing/config:/var/syncthing/config
-      - /home/jiggy/syncthing/data:/var/syncthing/data
+      - ${SYNCTHING_DIR}/config:/var/syncthing/config
+      - ${SYNCTHING_DIR}/data:/var/syncthing/data
     ports:
-      - "3005:8384"
       - "22000:22000/tcp"
       - "22000:22000/udp"
       - "21027:21027/udp"
+    expose:
+      - "8384"
     restart: unless-stopped
 
   filebrowser:
     image: filebrowser/filebrowser
     container_name: filebrowser
-    ports:
-      - 3004:80
+    expose:
+      - "80"
     volumes:
-      - /home/jiggy/syncthing/data:/srv
-      - /home/jiggy/filebrowser/database.db:/database.db
+      - ${SYNCTHING_DIR}/data:/srv
+      - ${FILEBROWSER_DIR}/database.db:/database.db
     restart: unless-stopped
     networks:
       - nginx-proxy-net

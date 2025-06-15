@@ -3,15 +3,19 @@
 SERVICE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 HOME_DIR="/home/jiggy"
 
+# import .env
+set -a
+source .env
+set +a
+
 # exit on error
 set -e
 
-# switch to home directory and create necessary folders + files
-cd $HOME_DIR
-mkdir -p syncthing/data
-mkdir -p syncthing/config
-mkdir -p filebrowser
-touch filebrowser/database.db
+# create necessary folders + files
+mkdir -p $SYNCTHING_DIR/data
+mkdir -p $SYNCTHING_DIR/config
+mkdir -p $FILEBROWSER_DIR
+touch $FILEBROWSER_DIR/database.db
 
 # switch to current directory
 cd $SERVICE_DIR
