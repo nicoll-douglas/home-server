@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    volumes:
+      - ${DATA_DIR}:/data
+    environment:
+      - DOMAIN=${INSTANCE_URL}
+      - SIGNUPS_ALLOWED=true
+    networks:
+      - nginx-proxy-net
+    expose:
+      - "80"
+
+networks:
+  nginx-proxy-net:
+    external: true
