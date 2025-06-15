@@ -16,6 +16,8 @@ services:
     expose:
       - "8384"
     restart: unless-stopped
+    networks:
+      - nginx-proxy-net
 
   filebrowser:
     image: filebrowser/filebrowser

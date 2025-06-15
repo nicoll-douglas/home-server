@@ -5,6 +5,8 @@ NETWORK_NAME="nginx-proxy-net"
 DOMAINS_FILE="../../config/nginx/domains"
 CERT_DIR="./certs"
 CERT_NAME="server"
+CERT_FILE="$CERT_DIR/$CERT_NAME.pem"
+CERT_KEY="$CERT_DIR/$CERT_NAME-key.pem"
 LOGS_DIR="../../logs/nginx"
 
 set -e
@@ -28,14 +30,15 @@ if ! [ -f $CERT_FILE  ] || ! [ -f $CERT_KEY ]; then
     exit 1
   fi
 
-  mkdir -p ./certs
-  mkcert -cert-file "$CERT_DIR/$CERT_NAME.pem" \
-    -key-file "$CERT_DIR/$CERT_NAME-key.pem" \
+  sudo -u "$SUDO_USER" mkdir -p ./certs
+  sudo -u "$SUDO_USER" mkcert \
+    -cert-file "$CERT_FILE" \
+    -key-file "$CERT_KEY" \
     $domains
 fi
 
 echo "Creating logs directory if it doesn't exist..."
-mkdir -p $LOGS_DIR
+sudo -u "$SUDO_USER" mkdir -p $LOGS_DIR
 
 if ! sudo docker network inspect "$NETWORK_NAME" >/dev/null 2>&1; then
   echo "Creating external network '$NETWORK_NAME'..."
