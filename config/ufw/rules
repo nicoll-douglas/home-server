@@ -1,11 +1,4 @@
-# allow access to Nginx container and File Browser web UI
 route allow 80/tcp
-
-# allow HTTPS access to Nginx container
 route allow 443/tcp
-
-# allow SSH from dev machine
 allow from 192.168.1.6 to any port 22 proto tcp
-
-# allow access to Gitea container via SSH from dev machine
 route allow from 192.168.1.6 to any port 22 proto tcp
