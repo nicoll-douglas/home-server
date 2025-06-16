@@ -1,0 +1,8 @@
+- Ansible
+- Proxmox / VM
+- Home media server, torrenting, VPN
+- Pi-hole
+- Learn Bash and/or Python for scripting
+- Learn networking theory
+- Experiments
+- Resource monitoring, Prometheus, Grafana
