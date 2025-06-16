@@ -11,6 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set up DNS resolution
+        run: |
+          echo "${{ vars.HOST }} ${{ vars.REPO_HOST }}" | sudo tee -a /etc/hosts
+          git config --global http.sslVerify false
+
       - name: Checkout Code
         uses: actions/checkout@v4
 
@@ -33,6 +38,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set up DNS resolution
+        run: |
+          echo "${{ vars.HOST }} ${{ vars.REPO_HOST }}" | sudo tee -a /etc/hosts
+          git config --global http.sslVerify false
+
       - name: Checkout Code
         uses: actions/checkout@v4
 
@@ -45,8 +55,8 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
 
-          echo "Adding host public key for ${{ vars.SSH_HOST }}"
-          ssh-keyscan -H ${{ vars.SSH_HOST }}
+          echo "Adding host public key for ${{ vars.HOST }}"
+          ssh-keyscan -H ${{ vars.HOST }}
 
           echo "Adding credentials to SSH agent"
           eval "$(ssh-agent -s)"
@@ -57,4 +67,4 @@ jobs:
       - name: Run Deployment
         run: |
           echo "Starting deployment"
-          ssh -o StrictHostKeyChecking=no ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }} "bash ${{ vars.DEPLOY_SCRIPT_PATH }}"
+          ssh -o StrictHostKeyChecking=no ${{ vars.SSH_USER }}@${{ vars.HOST }} "bash ${{ vars.DEPLOY_SCRIPT_PATH }}"
