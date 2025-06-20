@@ -25,7 +25,7 @@ services:
     expose:
       - "80"
     volumes:
-      - ${SYNCTHING_DIR}/data:/srv
+      - ${SYNCTHING_DIR}/data/public:/srv
       - ${FILEBROWSER_DIR}/database.db:/database.db
     restart: unless-stopped
     networks:
