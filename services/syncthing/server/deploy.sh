@@ -12,7 +12,7 @@ set +a
 set -e
 
 # create necessary folders + files
-mkdir -p $SYNCTHING_DIR/data
+mkdir -p $SYNCTHING_DIR/data/public
 mkdir -p $SYNCTHING_DIR/config
 mkdir -p $FILEBROWSER_DIR
 touch $FILEBROWSER_DIR/database.db
