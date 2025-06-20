@@ -10,9 +10,9 @@ set +a
 # exit on error
 set -e
 
-# switch to syncthing directory and create necessary folders + files
-mkdir -p $SYNCTHING_DIR/data
-mkdir -p $SYNCTHING_DIR/config
+# create necessary folders + files
+sudo -u "$SUDO_USER" mkdir -p $SYNCTHING_DIR/data
+sudo -u "$SUDO_USER" mkdir -p $SYNCTHING_DIR/config
 
 # switch to directory
 cd $SERVICE_DIR

@@ -12,10 +12,10 @@ set +a
 set -e
 
 # create necessary folders + files
-mkdir -p $SYNCTHING_DIR/data/public
-mkdir -p $SYNCTHING_DIR/config
-mkdir -p $FILEBROWSER_DIR
-touch $FILEBROWSER_DIR/database.db
+sudo -u "$SUDO_USER" mkdir -p $SYNCTHING_DIR/data/public
+sudo -u "$SUDO_USER" mkdir -p $SYNCTHING_DIR/config
+sudo -u "$SUDO_USER" mkdir -p $FILEBROWSER_DIR
+sudo -u "$SUDO_USER" touch $FILEBROWSER_DIR/database.db
 
 # switch to current directory
 cd $SERVICE_DIR
