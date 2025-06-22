@@ -1,17 +1,14 @@
 #!/bin/bash
 
-SERVICE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-NETWORK_NAME="nginx-proxy-net"
-DOMAINS_FILE="../../config/nginx/domains"
-CERT_DIR="./certs"
-CERT_NAME="server"
-CERT_FILE="$CERT_DIR/$CERT_NAME.pem"
-CERT_KEY="$CERT_DIR/$CERT_NAME-key.pem"
-LOGS_DIR="../../logs/nginx"
+service_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+network_name="nginx-proxy-net"
+domains_file="../../config/nginx/domains"
+certs_dir="./certs"
+logs_dir="../../logs/nginx"
 
 set -e
 
-cd $SERVICE_DIR
+cd $service_dir
 
 if [ ! -f /usr/local/bin/mkcert ]; then
   echo "Installing mkcert..."
@@ -21,26 +18,38 @@ if [ ! -f /usr/local/bin/mkcert ]; then
   sudo mv mkcert-v*-linux-amd64 /usr/local/bin/mkcert
 fi
 
-echo "Generating TLS certificate..."
-domains=$(cat $DOMAINS_FILE | xargs)
+echo "Generating TLS certificates..."
+domains=$(cat $domains_file | xargs)
 
 if [ -z "$domains" ]; then
-  echo "No domains found in $DOMAINS_FILE"
+  echo "No domains found in $domains_file"
   exit 1
 fi
 
-sudo -u "$SUDO_USER" mkdir -p $CERT_DIR
-sudo -u "$SUDO_USER" mkcert \
-  -cert-file "$CERT_FILE" \
-  -key-file "$CERT_KEY" \
-  $domains
+echo "Creating certs directory if it doesn't exist..."
+sudo -u "$SUDO_USER" mkdir -p $certs_dir
+
+for domain in $domains; do
+  local cert_file="$certs_dir/$domain.pem"
+  local cert_key="$certs_dir/$domain-key.pem"
+
+  if [ ! -f $cert_file ] || [ ! -f $cert_key ]; then
+    echo "Generating TLS certificate for $domain"
+    sudo -u "$SUDO_USER" mkcert \
+      -cert-file $cert_file \
+      -key-file $cert_key \
+      $domain
+  else
+    echo "Certificate exists for $domain, skipping..."
+  fi
+done
 
 echo "Creating logs directory if it doesn't exist..."
-sudo -u "$SUDO_USER" mkdir -p $LOGS_DIR
+sudo -u "$SUDO_USER" mkdir -p $logs_dir
 
-if ! sudo docker network inspect "$NETWORK_NAME" >/dev/null 2>&1; then
-  echo "Creating external network '$NETWORK_NAME'..."
-  sudo docker network create "$NETWORK_NAME"
+if ! sudo docker network inspect "$network_name" >/dev/null 2>&1; then
+  echo "Creating external network '$network_name'..."
+  sudo docker network create "$network_name"
 fi
 
 echo "Starting nginx and cloudflared containers..."

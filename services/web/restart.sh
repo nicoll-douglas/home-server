@@ -1,1 +1,1 @@
-sudo docker compose down && ./deploy.sh
+sudo docker compose down && sudo ./deploy.sh
