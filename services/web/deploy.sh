@@ -29,7 +29,7 @@ if [ -z "$domains" ]; then
   exit 1
 fi
 
-sudo -u "$SUDO_USER" mkdir -p ./certs
+sudo -u "$SUDO_USER" mkdir -p $CERT_DIR
 sudo -u "$SUDO_USER" mkcert \
   -cert-file "$CERT_FILE" \
   -key-file "$CERT_KEY" \
