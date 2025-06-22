@@ -19,12 +19,6 @@ if [ ! -f /usr/local/bin/mkcert ]; then
 fi
 
 echo "Generating TLS certificates..."
-domains=$(cat $domains_file | xargs)
-
-if [ -z "$domains" ]; then
-  echo "No domains found in $domains_file"
-  exit 1
-fi
 
 sudo -u "$SUDO_USER" mkdir -vp $certs_dir
 
