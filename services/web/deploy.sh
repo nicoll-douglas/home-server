@@ -30,8 +30,8 @@ echo "Creating certs directory if it doesn't exist..."
 sudo -u "$SUDO_USER" mkdir -p $certs_dir
 
 for domain in $domains; do
-  local cert_file="$certs_dir/$domain.pem"
-  local cert_key="$certs_dir/$domain-key.pem"
+  cert_file="$certs_dir/$domain.pem"
+  cert_key="$certs_dir/$domain-key.pem"
 
   if [ ! -f $cert_file ] || [ ! -f $cert_key ]; then
     echo "Generating TLS certificate for $domain"
