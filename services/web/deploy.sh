@@ -28,7 +28,7 @@ for file in $nginx_sites/*.conf; do
   cert_key="$certs_dir/$domain_base-key.pem"
 
   if [ ! -f $cert_file ] || [ ! -f $cert_key ]; then
-    rm -v "$certs_dir/*$domain_base*"
+    rm -vf "$certs_dir/*$domain_base*"
 
     echo "Generating TLS certificate for $domain_base.*"
     sudo -u "$SUDO_USER" mkcert \
