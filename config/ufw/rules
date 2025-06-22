@@ -2,3 +2,5 @@ route allow 80/tcp
 route allow 443/tcp
 allow from 192.168.1.6 to any port 22 proto tcp
 route allow from 192.168.1.6 to any port 22 proto tcp
+route allow 53/tcp
+route allow 53/udp
