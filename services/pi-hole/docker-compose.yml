@@ -20,7 +20,7 @@ services:
       - SYS_NICE
     restart: unless-stopped
     networks:
-      nginx-proxy-net:
+      - nginx-proxy-net
 
 volumes:
   etc-pihole:
