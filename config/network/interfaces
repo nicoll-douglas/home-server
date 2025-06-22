@@ -1,3 +1,5 @@
+# Configuration for /etc/network/interfaces on Debian machine (server)
+
 # The loopback network interface
 auto lo
 iface lo inet loopback
