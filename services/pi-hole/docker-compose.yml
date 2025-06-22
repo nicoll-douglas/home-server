@@ -19,6 +19,12 @@ services:
       - SYS_TIME
       - SYS_NICE
     restart: unless-stopped
+    networks:
+      nginx-proxy-net:
 
 volumes:
   etc-pihole:
+
+networks:
+  nginx-proxy-net:
+    external: true
