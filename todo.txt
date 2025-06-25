@@ -1,7 +1,14 @@
+Hosting Ideas:
+- RSS feeds
+- Home media server, torrenting, VPN
+
+Tech to experiment with:
 - Ansible
 - Proxmox / VM
-- Home media server, torrenting, VPN
-- Learn Bash and/or Python for scripting
-- Learn networking theory
-- Experiments
+- Kubernetes / K3s
 - Resource monitoring, Prometheus, Grafana
+- Log management, Loki
+
+Things to learn:
+- Bash and/or Python for scripting
+- Learn networking theory
