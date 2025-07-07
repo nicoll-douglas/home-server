@@ -10,34 +10,30 @@ set -e
 
 cd $service_dir
 
-if [ ! -f /usr/local/bin/mkcert ]; then
-  echo "Installing mkcert..."
-  sudo apt install -y libnss3-tools
-  curl -JLO "https://dl.filippo.io/mkcert/latest?for=linux/amd64"
-  chmod +x mkcert-v*-linux-amd64
-  sudo mv mkcert-v*-linux-amd64 /usr/local/bin/mkcert
-fi
-
 echo "Generating TLS certificates..."
 
 sudo -u "$SUDO_USER" mkdir -vp $certs_dir
 
-for file in $nginx_sites/*.conf; do
-  domain_base=$(basename "${file%.conf}")
-  cert_file="$certs_dir/$domain_base.pem"
-  cert_key="$certs_dir/$domain_base-key.pem"
+for subdir in "$nginx_sites"/*/; do
+  [ -d "$subdir" ] || continue
 
-  if [ ! -f $cert_file ] || [ ! -f $cert_key ]; then
-    rm -vf "$certs_dir/*$domain_base*"
+  for file in "$subdir/*.conf"; do
+    domain=$(basename "${file%.conf}")
+    cert_file="$certs_dir/$domain.pem"
+    cert_key="$certs_dir/$domain-key.pem"
 
-    echo "Generating TLS certificate for $domain_base.*"
-    sudo -u "$SUDO_USER" mkcert \
-      -cert-file $cert_file \
-      -key-file $cert_key \
-      $domain_base.lan $domain_base.dev
-  else
-    echo "Certificate exists for $domain_base.*, skipping..."
-  fi
+    if [ ! -f $cert_file ] || [ ! -f $cert_key ]; then
+      rm -vf "$certs_dir/*$domain*"
+
+      echo "Generating TLS certificate for: $domain"
+      sudo -u "$SUDO_USER" mkcert \
+        -cert-file $cert_file \
+        -key-file $cert_key \
+        $domain
+    else
+      echo "Certificate exists for $domain, skipping..."
+    fi
+  done
 done
 
 sudo -u "$SUDO_USER" mkdir -vp $logs_dir

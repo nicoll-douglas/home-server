@@ -1,5 +1,5 @@
 services:
-  portfolio:
+  personal_website:
     image: ${DOCKERHUB_IMAGE}
     container_name: personal_website
     restart: unless-stopped
