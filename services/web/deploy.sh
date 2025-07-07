@@ -14,7 +14,7 @@ echo "Generating TLS certificates..."
 
 sudo -u "$SUDO_USER" mkdir -vp $certs_dir
 
-for subdir in "$nginx_sites"/*/; do
+for subdir in "$nginx_sites/*/"; do
   [ -d "$subdir" ] || continue
 
   for file in "$subdir/*.conf"; do
