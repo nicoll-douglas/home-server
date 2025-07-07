@@ -1,6 +1,7 @@
 Hosting Ideas:
 - RSS feeds
 - Home media server, torrenting, VPN
+- Mail server
 
 Tech to experiment with:
 - Ansible

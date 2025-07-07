@@ -1,0 +1,18 @@
+services:
+  portfolio:
+    image: ${DOCKERHUB_IMAGE}
+    container_name: personal_website
+    restart: unless-stopped
+    networks:
+      - nginx-proxy-net
+    expose:
+      - "80"
+    volumes:
+      - personal_website_db:/var/www/data
+
+networks:
+  nginx-proxy-net:
+    external: true
+
+volumes:
+  personal_website_db:
