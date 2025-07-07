@@ -1,26 +1,27 @@
 #!/bin/bash
 
-CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+config_dir="$here/../../config"
 
-cd $CURRENT_DIR
+cd $here
 
 echo "Installing utilities"
 sudo apt-get update
 sudo apt install -y build-essential git
 
 echo "Adding network configuration to /etc/network/interfaces"
-sudo cp ../config/interfaces.server /etc/network/interfaces
+sudo cp $config_dir/network/interfaces.server /etc/network/interfaces
 
 echo "Installing ufw"
 sudo apt install -y ufw
 
 echo "Adding ufw-docker config to /etc/ufw/after.rules"
-sudo cat ../config/ufw/ufw-docker >> /etc/ufw/after.rules
+sudo cat $config_dir/ufw/ufw-docker >> /etc/ufw/after.rules
 
 echo "Adding current rules to ufw"
 while IFS= read -r rule; do
   sudo ufw $rule
-done < ../config/ufw/rules
+done < "$config_dir/ufw/rules"
 
 echo "Enabling ufw"
 sudo ufw enable
