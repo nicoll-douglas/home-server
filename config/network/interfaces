@@ -1,10 +1,11 @@
-# Configuration for /etc/network/interfaces on Debian machine (server)
+# server
+# /etc/network/interfaces
 
-# The loopback network interface
+# loopback
 auto lo
 iface lo inet loopback
 
-# Ethernet network interface
+# ethernet
 auto enp1s0
 iface enp1s0 inet static
     address 192.168.1.5

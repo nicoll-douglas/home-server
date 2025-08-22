@@ -1,1 +1,0 @@
-../../scripts/deploy/deploy_to_web.sh
