@@ -42,7 +42,7 @@ I'm running a dockerized Nginx reverse proxy as a solution for hosting multiple 
 
 Because I'm lazy and technology exists, I'm using a Cloudflare tunnel in order to expose my Nginx reverse proxy to the Web with minimal headache. Requests to my configured domains are piped into the tunnel in order for Nginx to do its thing. You can read more about that [here](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/). Cloudflare also conveniently provides a Docker image for running the Cloudflare daemon on your server.
 
-It's a solid solution without having to expose your IP address and set up things like port-forwarding, DDoS protection, etc. since you get all of that out of the box. The only downside to this is being tied to the Cloudflare ecosystem but that's alright.
+It's a solid solution without having to expose your IP address and set up things like port-forwarding, DDoS protection, TLS, etc. since you get all of that out of the box. The only downside to this is being tied to the Cloudflare ecosystem but that's alright.
 
 ## Specifications
 
