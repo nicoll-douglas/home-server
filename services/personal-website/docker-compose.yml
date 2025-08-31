@@ -8,7 +8,7 @@ services:
     expose:
       - "80"
     volumes:
-      - personal_website_db:/var/www/data
+      - personal_website_db:/var/www/data/db
       - ${WATCHLISTS_PATH}:/var/www/data/watchlists
 
 networks:
