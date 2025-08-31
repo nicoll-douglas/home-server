@@ -9,6 +9,7 @@ services:
       - "80"
     volumes:
       - personal_website_db:/var/www/data
+      - ${WATCHLISTS_PATH}:/var/www/data/watchlists
 
 networks:
   nginx-proxy-net:
