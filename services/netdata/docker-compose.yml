@@ -25,16 +25,8 @@ services:
       - /var/log:/host/var/log:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /run/dbus:/run/dbus:ro
-    expose:
-      - "19999"
-    networks:
-      - nginx-proxy-net
 
 volumes:
   netdataconfig:
   netdatalib:
   netdatacache:
-
-networks:
-  nginx-proxy-net:
-    external: true
