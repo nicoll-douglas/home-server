@@ -16,12 +16,6 @@ I'm mostly using my server to self-host my own services via the Web/HTTP. The ma
 
 It's also a good opportunity to work with Linux, networking, and other computer nerd stuff.
 
-### Architecture
-
-An overview of my server/hosting architecture + workflow.
-
-<img src="assets/images/architecture.png" alt="hosting architecture">
-
 ## Setup
 
 ### Docker
