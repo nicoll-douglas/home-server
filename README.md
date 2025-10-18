@@ -6,25 +6,32 @@ Contains code, scripts, configurations, and service definitions that I use on my
 
 ### What I Use My Server For
 
-I'm mostly using my server to self-host my own services via the web. The main ones being:
+I'm mostly using my server to self-host my own web-based services. The main ones being:
 
-- My website
+- [My website](https://nicolldouglas.xyz)
 - Vaultwarden - My password manager
 - Gitea - For local CI/CD
 - Syncthing - For file backups
-- File Browser - For GUI-based file access
+- File Browser - For web-based file access
+
+## File Structure
+
+- `config` - Contains service or system configurations for things like Nginx, Gitea, DNS, and firewalls.
+- `scripts` - Contains scripts for different tasks such as deployment.
+- `services` - Where I keep Docker Compose files, environment variables and deployment scripts for different services I'm hosting.
+- `workflows` - Some reusable GitHub/Gitea actions workflows that I use for CI/CD with my server.
 
 ## Setup
 
 ### Docker
 
-I try to keep my services and software dockerized wherever possible, mostly managing them with Docker Compose files via the terminal. You can find the files in question under the [services](services) folder.
+I try to keep my services and software dockerized wherever possible, mostly managing them with Docker Compose files via the terminal.
 
 ### Gitea
 
-The nice thing about self-hosting a Gitea instance is that I can run basic CI/CD locally on my machines and deploy locally using [Gitea Actions](https://docs.gitea.com/usage/actions/overview). I'm namely doing this with my [website](https://nicolldouglas.xyz).
+With a Gitea instance, I run basic CI/CD locally on my machines and deploy locally using [Gitea Actions](https://docs.gitea.com/usage/actions/overview). I'm namely doing this with my [website](https://nicolldouglas.xyz).
 
-I have a job runner set up on my main PC used to run CI/CD jobs received from Gitea. This is mainly to offload heavy CI/CD processes from my server onto my PC which can handle them much better. But since everything is built locally I can just deploy straight away without much hassle.
+I have a job runner set up on my main PC used to run CI/CD jobs received from Gitea. This is mainly to offload heavy build processes from my server onto my PC which can handle them much better. But since everything is built locally I can just deploy straight away without much hassle.
 
 ### Nginx
 
@@ -32,7 +39,7 @@ I'm running a dockerized Nginx reverse proxy as a solution for hosting multiple 
 
 ### Cloudflare Tunnel
 
-Because I'm lazy and technology exists, I'm using a Cloudflare tunnel in order to expose my Nginx reverse proxy to the web with minimal headache. Requests to my configured domains are piped into the tunnel in order for Nginx to do its thing. You can read more about that [here](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/). Cloudflare also conveniently provides a Docker image for running the Cloudflare daemon on your server which is what I use.
+I'm using a Cloudflare tunnel in order to expose my Nginx reverse proxy to the web with minimal headache. Requests to my configured domains hit Cloudflare and are piped into the tunnel in order for Nginx to do its thing. Cloudflare also conveniently provides a Docker image for running the Cloudflare daemon on your server which is what I use.
 
 ## Specifications
 
@@ -42,13 +49,13 @@ The operating system of choice is Debian 12. Mostly because I'm most comfortable
 
 ### Hardware
 
-My server recycles an old Toshiba Satellite C50-B 14D laptop from circa 2014-15. I think originally this laptop was designed to run Windows 8 but when I dug it up it had Windows 10 installed. At that point it was basically unusable as a desktop but now it runs well as a repurposed Linux machine.
+My server recycles an old Toshiba Satellite C50-B 14D laptop from circa 2014-15. When I dug it up it was basically unusable as a desktop but now it runs well as a repurposed Linux machine.
 
 #### Specifications
 
 I have to be wary when trying to host certain services since my resources can be easily overloaded but for the most part the specs of the laptop can handle hosting simple web services which is all I need for now.
 
-- Storage: 500GB HDD (SATA)
+- Storage: 500GB HDD
 - Memory: 4GB
 - CPU: Intel Celeron N2830
 - Clock Speed: 2.16GHz
@@ -65,9 +72,8 @@ I have to be wary when trying to host certain services since my resources can be
 Some overdue things I'm needing to implement with my server:
 
 - Easy log management
-- Resource monitoring (that isn't `top` or `htop`)
-- Perhaps a mail suite/server as well
+- Perhaps a Mailcow or Mailu instance for my own email
 
 Other than that, I think my main goal with the server is to try and experiment a bit more with different technologies.
 
-Perhaps I might buy a cheap machine to try out working with things like Kubernetes and VMs, and leave the current one just for simple hosting. Or maybe I might just reinstall my entire setup and try learning something like Ansible as well as improving my Bash skills.
+Perhaps I might buy a cheap machine to try out working with things like Kubernetes and VMs, and leave the current one just for simple hosting. Or maybe I might just reinstall my entire setup and try learning something like Ansible to automate it.
