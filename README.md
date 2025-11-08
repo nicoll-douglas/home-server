@@ -1,4 +1,21 @@
-# Home Server
+<div align="center">
+  <h1>Home Server</h1>
+
+  <div>
+  <img src="https://img.shields.io/badge/Status-Operational-green" />
+  </div>
+
+  <div>
+    <img src="https://img.shields.io/badge/Debian-gray?logo=debian" />
+    <img src="https://img.shields.io/badge/Bash-gray?logo=bash" />
+    <img src="https://img.shields.io/badge/Nginx-gray?logo=nginx" />
+    <img src="https://img.shields.io/badge/Docker-gray?logo=docker" />
+    <img src="https://img.shields.io/badge/Gitea-gray?logo=gitea" />
+    <img src="https://img.shields.io/badge/Cloudflare-gray?logo=cloudflare" />
+  </div>
+</div>
+
+## About
 
 Contains code, scripts, configurations, and service definitions that I use on my home server.
 
