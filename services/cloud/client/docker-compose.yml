@@ -11,8 +11,8 @@ services:
       - "22000:22000/udp"
       - "21027:21027/udp"
     volumes:
-      - ${SYNCTHING_DIR}/config:/var/syncthing/config
-      - ${SYNCTHING_DIR}/data:/var/syncthing/data
+      - ${SYNCTHING_DIR}/.syncthing_config:/var/syncthing/config
+      - ${SYNCTHING_DIR}:/var/syncthing/data
     environment:
       - PUID=1000
       - PGID=1000

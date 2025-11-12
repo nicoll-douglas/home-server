@@ -18,4 +18,4 @@ sudo -u "$SUDO_USER" mkdir -p $SYNCTHING_DIR/config
 cd $SERVICE_DIR
 
 echo "Starting Syncthing container..."
-docker compose up -d
+sudo docker compose up -d
