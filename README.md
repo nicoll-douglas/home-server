@@ -62,7 +62,7 @@ I'm using a Cloudflare tunnel in order to expose my Nginx reverse proxy to the w
 
 ### OS
 
-The operating system of choice is Debian 12. Mostly because I'm most comfortable with Ubuntu and I needed something more lightweight so my hardware doesn't suffer.
+The operating system of choice is Debian 12 as a reliable and lightweight option.
 
 ### Hardware
 
@@ -83,14 +83,3 @@ I have to be wary when trying to host certain services since my resources can be
   <img height="200" src="assets/images/laptop.jpg" alt="Laptop">
   <img height="200" src="assets/images/laptop-2.png" alt="Laptop">
 </div>
-
-## Roadmap
-
-Some overdue things I'm needing to implement with my server:
-
-- Easy log management
-- Perhaps a Mailcow or Mailu instance for my own email
-
-Other than that, I think my main goal with the server is to try and experiment a bit more with different technologies.
-
-Perhaps I might buy a cheap machine to try out working with things like Kubernetes and VMs, and leave the current one just for simple hosting. Or maybe I might just reinstall my entire setup and try learning something like Ansible to automate it.
