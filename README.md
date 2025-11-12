@@ -21,8 +21,6 @@ Contains code, scripts, configurations, and service definitions that I use on my
 
 ## Background
 
-### What I Use My Server For
-
 I'm mostly using my server to self-host my own web-based services. The main ones being:
 
 - [My website](https://nicolldouglas.xyz)
@@ -38,7 +36,7 @@ I'm mostly using my server to self-host my own web-based services. The main ones
 - `services` - Where I keep Docker Compose files, environment variables and deployment scripts for different services I'm hosting.
 - `workflows` - Some reusable GitHub/Gitea actions workflows that I use for CI/CD with my server.
 
-## Setup
+## Software
 
 ### Docker
 
@@ -58,17 +56,15 @@ I'm running a dockerized Nginx reverse proxy as a solution for hosting multiple 
 
 I'm using a Cloudflare tunnel in order to expose my Nginx reverse proxy to the web with minimal headache. Requests to my configured domains hit Cloudflare and are piped into the tunnel in order for Nginx to do its thing. Cloudflare also conveniently provides a Docker image for running the Cloudflare daemon on your server which is what I use.
 
-## Specifications
-
-### OS
+### Debian
 
 The operating system of choice is Debian 12 as a reliable and lightweight option.
 
-### Hardware
+## Hardware
 
 My server recycles an old Toshiba Satellite C50-B 14D laptop from circa 2014-15. When I dug it up it was basically unusable as a desktop but now it runs well as a repurposed Linux machine.
 
-#### Specifications
+### Specifications
 
 I have to be wary when trying to host certain services since my resources can be easily overloaded but for the most part the specs of the laptop can handle hosting simple web services which is all I need for now.
 
@@ -77,7 +73,7 @@ I have to be wary when trying to host certain services since my resources can be
 - CPU: Intel Celeron N2830
 - Clock Speed: 2.16GHz
 
-#### Images
+### Images
 
 <div style="display: flex; align-items: start; gap: 1rem;">
   <img height="200" src="assets/images/laptop.jpg" alt="Laptop">
