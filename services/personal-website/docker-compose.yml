@@ -9,6 +9,8 @@ services:
       - "80"
     volumes:
       - personal_website_db:/var/www/data
+    environment:
+      - APP_ENV=${APP_ENV}
 
 networks:
   nginx-proxy-net:
