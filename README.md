@@ -28,6 +28,7 @@ I'm mostly using my server to self-host my own web-based services. The main ones
 - Gitea - For local CI/CD
 - Syncthing - For file backups
 - File Browser - For web-based file access
+- Beszel - For server monitoring
 
 ## File Structure
 
@@ -55,6 +56,10 @@ I'm running a dockerized Nginx reverse proxy as a solution for hosting multiple 
 ### Cloudflare Tunnel
 
 I'm using a Cloudflare tunnel in order to expose my Nginx reverse proxy to the web with minimal headache. Requests to my configured domains hit Cloudflare and are piped into the tunnel in order for Nginx to do its thing. Cloudflare also conveniently provides a Docker image for running the Cloudflare daemon on your server which is what I use.
+
+### Beszel
+
+I'm using Beszel as a solution for resource monitoring.
 
 ### Debian
 
