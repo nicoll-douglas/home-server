@@ -8,6 +8,8 @@ services:
       - beszel_socket:/beszel_socket
     networks:
       - nginx-proxy-net
+    ports:
+      - "8090:8090"
     expose:
       - "8090"
 
