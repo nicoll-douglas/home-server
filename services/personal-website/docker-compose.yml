@@ -11,6 +11,8 @@ services:
       - personal_website_db:/var/www/data
     environment:
       - APP_ENV=${APP_ENV}
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
 
 networks:
   nginx-proxy-net:
