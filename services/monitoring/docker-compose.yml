@@ -24,9 +24,9 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       LISTEN: /beszel_socket/beszel.sock
-      HUB_URL: http://beszel:8090
-      TOKEN: <token>
-      KEY: "<key>"
+      KEY: "${BESZEL_KEY}"
+      TOKEN: "${BESZEL_TOKEN}"
+      HUB_URL: https://beszel.lan
 
 networks:
   nginx-proxy-net:
